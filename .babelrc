@@ -1,0 +1,9 @@
+{
+  "presets":["react-app"],
+  "plugins": [
+    ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }],
+    ["transform-decorators-legacy"],
+    ["babel-plugin-transform-es2015-modules-commonjs"],
+    ["syntax-dynamic-import"]
+  ]
+}

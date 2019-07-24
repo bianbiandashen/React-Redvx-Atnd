@@ -1,0 +1,60 @@
+@import './theme.less';
+
+.ant-layout-header.header {
+  height: @g-header-height;
+  background-color: @g-header-bg-color;
+  line-height: @g-header-height;
+  padding: 0;
+}
+
+.menu-content {
+
+  .ant-menu-dark,
+  .ant-menu-dark.ant-menu.ant-menu-inline {
+    background: @menu-background;
+
+    .ant-menu-item {
+      margin: 0;
+      font-size: @font-size-base;
+      color: @menu-item-color;
+      height: @menu-item-height;
+      line-height: @menu-item-height;
+
+      &:hover,
+      &.ant-menu-item-selected {
+        color: @menu-item-selected-color;
+        background: @menu-item-selected-background;
+      }
+
+      &.ant-menu-item-selected {
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 3px;
+          height: 100%;
+          background: @primary-color;
+          right: 0;
+          top: 0;
+          z-index: 10;
+        }
+      }
+    }
+
+    .ant-menu-submenu {
+      color: @menu-item-color;
+
+      .ant-menu-submenu-title {
+        height: @menu-item-height;
+        line-height: @menu-item-height;
+      }
+
+      .ant-menu-sub {
+
+        &.ant-menu-inline {
+          background: @menu-background;
+        }
+      }
+    }
+  }
+}
