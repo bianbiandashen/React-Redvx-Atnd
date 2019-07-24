@@ -61,7 +61,7 @@ function configureStore() {
   }
     const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-  store = createStore(persistedReducer, initialState,
+  store = createStore(rootReducer, initialState,
       compose(applyMiddleware(
           // errorHandler,
           thunk, // 允许我们 dispatch() 函数

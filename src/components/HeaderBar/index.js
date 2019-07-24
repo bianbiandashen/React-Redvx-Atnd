@@ -82,7 +82,7 @@ class HeaderBar extends React.Component {
       </div>
     )
     const menu = (
-      <Menu className='menu'>
+      <Menu className='menu-content' theme="dark">
         <Menu.ItemGroup title='用户中心' className='menu-group'>
           <Menu.Item>你好 - {token && token.username}</Menu.Item>
           <Menu.Item>个人信息</Menu.Item>
@@ -105,6 +105,9 @@ class HeaderBar extends React.Component {
           type={collapsed ? 'menu-unfold' : 'menu-fold'}
           className='trigger'
           onClick={this.toggle}/>
+
+
+        { menu }
         <div style={{lineHeight: '64px', float: 'right'}}>
           <ul className='header-ul'>
             <li><Icon type={icon} onClick={this.screenfullToggle}/></li>

@@ -9,19 +9,35 @@ import {Provider} from 'react-redux';
 import { LocaleProvider } from 'antd'
 import zh_CN from 'antd/lib/locale-provider/zh_CN'
 import {configureStore,persistor } from './store'
+import { saveState } from './action/saveState';
 import { PersistGate } from 'redux-persist/integration/react';
+
+import {  getSavedState } from './reducers/index';
+import '@/styles/base.less'
+
 const store = configureStore();
 
-
+/**
+ * 退出时，缓存当前的store
+ */
+window.onunload = () => {
+    store.dispatch(saveState(getSavedState));
+};
+window.addEventListener('pageshow', myLoadHandler, false);
+window.addEventListener('pagehide', myUnloadHandler, false);
+function myLoadHandler() {
+        store.dispatch(saveState(getSavedState));
+}
+function myUnloadHandler() {
+        store.dispatch(saveState(getSavedState));
+}
 //打包时，用的HashRouter并加上了basename，因为放在服务器的二级目录下
 ReactDOM.render(
   <BrowserRouter>
     <LocaleProvider locale={zh_CN}>
-        <PersistGate loading={null} persistor={persistor}>
         <Provider store={store}>
         <App/>
       </Provider>
-            </PersistGate>
     </LocaleProvider>
   </BrowserRouter>,
   document.getElementById('root'));
